@@ -1,0 +1,102 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.movie {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+.poster {
+  margin-right: 16px;
+  max-width: 300px;
+  object-fit: cover;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.tagline {
+  font-size: 18px;
+  font-style: italic;
+  margin-bottom: 16px;
+}
+
+.overview {
+  margin-bottom: 16px;
+}
+
+.genres {
+  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.genre {
+  background-color: #f2f2f2;
+  color: #333;
+  font-size: 12px;
+  font-weight: 600;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.production {
+  margin-bottom: 16px;
+}
+
+.production-company {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.production-logo {
+  margin-right: 8px;
+  max-width: 100px;
+  object-fit: contain;
+}
+
+.production-country {
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.backdrop {
+  margin-bottom: 16px;
+  max-height: 500px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.details {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: row;
+}
+
+.details-item {
+  display: flex;
+  flex-direction: column;
+  margin-right: 24px;
+}
+
+.details-label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.details-value {
+  font-size: 16px;
+}

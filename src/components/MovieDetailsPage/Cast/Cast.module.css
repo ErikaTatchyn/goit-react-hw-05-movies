@@ -1,0 +1,28 @@
+.cast {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+}
+
+.castItem {
+  margin-right: 20px;
+  margin-bottom: 20px;
+  width: calc(33.3333% - 20px);
+}
+
+.castItemImage {
+  width: 100%;
+  height: auto;
+}
+
+.castItemName {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.castItemCharacter {
+  margin-top: 5px;
+  font-size: 14px;
+}

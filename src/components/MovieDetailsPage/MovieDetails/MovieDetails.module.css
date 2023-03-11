@@ -1,0 +1,31 @@
+.movieDetails {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.poster {
+  width: 300px;
+  margin-right: 20px;
+}
+
+.details {
+  flex-grow: 1;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-top: 20px;
+}
+
+p {
+  margin: 0;
+  font-size: 1.2em;
+  margin-top: 10px;
+}
