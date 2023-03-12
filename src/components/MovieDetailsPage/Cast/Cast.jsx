@@ -8,7 +8,7 @@ const Cast = ({ cast }) => (
         <li key={actor.id} className={styles.castItem}>
           <img
             src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
-            alt={actor.name}
+            alt={cast.original_name}
             className={styles.castItemImage}
           />
           <p className={styles.castItemName}>{actor.name}</p>

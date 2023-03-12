@@ -36,17 +36,9 @@ const MovieDetailsPage = () => {
     return <p>Movie not found.</p>;
   }
 
-  const {
-    title,
-    poster_path,
-    overview,
-    releaseDate,
-    genres,
-    runtime,
-    budget,
-    revenue,
-  } = movie;
-
+  const { title, poster_path, overview, genres, runtime, budget, revenue } =
+    movie;
+  const posterUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
   const genresList = genres.map(genre => (
     <span key={genre.id} className={styles.genre}>
       {genre.name}
@@ -59,7 +51,7 @@ const MovieDetailsPage = () => {
       <Header />
       <div className={styles.container}>
         <div className={styles.movie}>
-          <img src={poster_path} alt={title} className={styles.poster} />
+          <img src={posterUrl} alt={title} className={styles.poster} />
 
           <div className={styles.info}>
             <h1 className={styles.title}>{title}</h1>
@@ -67,10 +59,6 @@ const MovieDetailsPage = () => {
             <div className={styles.genres}>{genresList}</div>
             <p className={styles.overview}>{overview}</p>
             <div className={styles.details}>
-              <div className={styles.detailsItem}>
-                <span className={styles.detailsLabel}>Release date:</span>
-                <span className={styles.detailsValue}>{releaseDate}</span>
-              </div>
               <div className={styles.detailsItem}>
                 <span className={styles.detailsLabel}>Runtime:</span>
                 <span className={styles.detailsValue}>{runtime} min</span>
@@ -107,10 +95,8 @@ const MovieDetailsPage = () => {
             </div>
           </div>
         </div>
-
-        {credits && <Cast cast={credits.cast} />}
-
         {reviews && <Reviews reviews={reviews} />}
+        {credits && <Cast cast={credits} />}
       </div>
     </>
   );

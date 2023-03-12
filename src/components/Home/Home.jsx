@@ -27,7 +27,6 @@ function Home() {
               <Link to={`/movies/${movie.id}`}>
                 <h2>{movie.title}</h2>
               </Link>
-              <p>{movie.overview}</p>
             </li>
           ))}
       </ul>

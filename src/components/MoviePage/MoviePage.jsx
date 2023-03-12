@@ -1,6 +1,8 @@
 import Header from 'components/Header/Header';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { getTrendingMovies, searchMovies } from '../../Api';
+import MovieCard from './MovieCard/MovieCard';
 import MovieList from './MovieList/MovieList';
 import styles from './MoviePage.module.css';
 
@@ -40,7 +42,6 @@ function MoviePage() {
 
   return (
     <>
-      {' '}
       <Header />
       <div className={styles.container}>
         {!isLoading && !error && (
@@ -53,10 +54,16 @@ function MoviePage() {
               <h2 className={styles.title}>Popular Movies</h2>
             )}
             <div className={styles.movieList}>
-              <MovieList movies={movies} onSearch={handleSearch} />
+              <MovieList movies={movies} onSearch={handleSearch}>
+                {movies.map(movie => (
+                  <Link key={movie.id} to={`/movies/${movie.id}`}>
+                    <MovieCard movie={movie} />
+                  </Link>
+                ))}
+              </MovieList>
             </div>
           </div>
-        )}{' '}
+        )}
       </div>
     </>
   );

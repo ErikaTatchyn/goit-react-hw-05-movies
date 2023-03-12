@@ -1,21 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import styles from './MovieCard.module.css';
 
 const MovieCard = ({ movie }) => {
-  const { title, poster_path } = movie;
+  const { id, title, poster_path } = movie;
   const posterUrl = `https://image.tmdb.org/t/p/w500${poster_path}`;
 
   return (
-    <div className={styles.card}>
+    <Link to={`/movies/${id}`} className={styles.card}>
       <img src={posterUrl} alt={title} className={styles.poster} />
       <div className={styles.title}>{title}</div>
-    </div>
+    </Link>
   );
 };
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     poster_path: PropTypes.string.isRequired,
   }).isRequired,
