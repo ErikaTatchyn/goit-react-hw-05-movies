@@ -4,6 +4,7 @@ import {
   Routes,
   Route,
   Outlet,
+  BrowserRouter,
 } from 'react-router-dom';
 import Home from './Home/Home';
 import Cast from './MovieDetailsPage/Cast/Cast';
@@ -13,7 +14,7 @@ import MoviePage from './MoviePage/MoviePage';
 
 export function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -25,6 +26,6 @@ export function App() {
           <Route path="*" element={<Outlet />} />
         </Routes>
       </Suspense>
-    </Router>
+    </BrowserRouter>
   );
 }
