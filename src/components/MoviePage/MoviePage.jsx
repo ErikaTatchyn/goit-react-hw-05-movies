@@ -56,7 +56,7 @@ function MoviePage() {
               <MovieList movies={movies} onSearch={handleSearch} />
             </div>
           </div>
-        )}
+        )}{' '}
       </div>
     </>
   );
