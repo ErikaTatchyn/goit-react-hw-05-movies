@@ -82,7 +82,7 @@
 .details {
   margin-bottom: 16px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .details-item {

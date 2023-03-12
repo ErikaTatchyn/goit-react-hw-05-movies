@@ -19,10 +19,10 @@ export function App() {
           <Route path="/" element={<Home />} />
           <Route exact path="/movies" element={<MoviePage />} />
           <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
-            <Route path=":movieId/cast" element={<Cast />} />
-            <Route path=":movieId/reviews" element={<Reviews />} />
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
           </Route>
-          <Route path="/" element={<Outlet />} />
+          <Route path="*" element={<Outlet />} />
         </Routes>
       </Suspense>
     </Router>
