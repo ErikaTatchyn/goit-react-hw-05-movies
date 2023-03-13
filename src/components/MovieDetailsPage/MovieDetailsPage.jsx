@@ -5,7 +5,6 @@ import Cast from './Cast/Cast';
 import Reviews from './Reviews/Reviews';
 
 import styles from './MovieDetailsPage.module.css';
-import Header from 'components/Header/Header';
 
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
@@ -47,8 +46,6 @@ const MovieDetailsPage = () => {
 
   return (
     <>
-      {' '}
-      <Header />
       <div className={styles.container}>
         <div className={styles.movie}>
           <img src={posterUrl} alt={title} className={styles.poster} />

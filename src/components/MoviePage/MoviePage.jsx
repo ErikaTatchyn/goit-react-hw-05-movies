@@ -1,4 +1,3 @@
-import Header from 'components/Header/Header';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getTrendingMovies, searchMovies } from '../../Api';
@@ -42,7 +41,6 @@ function MoviePage() {
 
   return (
     <>
-      <Header />
       <div className={styles.container}>
         {!isLoading && !error && (
           <div>

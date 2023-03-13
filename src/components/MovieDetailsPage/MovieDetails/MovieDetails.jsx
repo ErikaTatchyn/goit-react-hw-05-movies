@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { getMovieDetails } from '../../../Api';
-import Header from 'components/Header/Header';
 
 function MovieDetails({ match }) {
   const [movie, setMovie] = useState(null);
@@ -18,7 +17,6 @@ function MovieDetails({ match }) {
 
   return (
     <div>
-      <Header />
       {movie ? (
         <div>
           <h1>{movie.title}</h1>

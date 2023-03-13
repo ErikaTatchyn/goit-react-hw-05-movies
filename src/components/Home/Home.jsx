@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Home.module.css';
 import { getTrendingMovies } from '../../Api';
-import Header from 'components/Header/Header';
 import { Link } from 'react-router-dom';
 
 function Home() {
@@ -19,7 +18,6 @@ function Home() {
 
   return (
     <div className={styles.container}>
-      <Header />
       <ul>
         {movies &&
           movies.map(movie => (
