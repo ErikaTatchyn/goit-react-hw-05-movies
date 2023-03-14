@@ -1,8 +1,8 @@
 import { getMovieDetails, getMovieCredits, getMovieReviews } from 'Api';
 import { useEffect, useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
-import Cast from './Cast/Cast';
-import Reviews from './Reviews/Reviews';
+import { NavLink, Outlet, useParams } from 'react-router-dom';
+import Cast from '../../components/Cast/Cast';
+import Reviews from '../../components/Reviews/Reviews';
 
 import styles from './MovieDetailsPage.module.css';
 
@@ -92,6 +92,7 @@ const MovieDetailsPage = () => {
             </div>
           </div>
         </div>
+        <Outlet />
         {reviews && <Reviews reviews={reviews} />}
         {credits && <Cast cast={credits} />}
       </div>

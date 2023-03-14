@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getTrendingMovies, searchMovies } from '../../Api';
-import MovieCard from './MovieCard/MovieCard';
-import MovieList from './MovieList/MovieList';
+import MovieCard from '../../components/MovieCard/MovieCard';
+import MovieList from '../../components/MovieList/MovieList';
 import styles from './MoviePage.module.css';
 
 function MoviePage() {

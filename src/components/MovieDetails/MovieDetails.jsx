@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { getMovieDetails } from '../../../Api';
+import { getMovieDetails } from '../../Api';
 
 function MovieDetails({ match }) {
   const [movie, setMovie] = useState(null);

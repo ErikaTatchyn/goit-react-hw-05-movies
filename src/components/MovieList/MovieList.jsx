@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './MovieList.module.css';
-import MovieCard from 'components/MoviePage/MovieCard/MovieCard';
+import MovieCard from 'components/MovieCard/MovieCard';
 
 const MovieList = ({ movies, onItemClick, onSearch }) => {
   const [searchQuery, setSearchQuery] = useState('');

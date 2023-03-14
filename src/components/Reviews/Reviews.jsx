@@ -3,7 +3,7 @@ import styles from './Reviews.module.css';
 
 const Reviews = ({ reviews }) => (
   <>
-    {reviews.length ? (
+    {reviews?.length ? (
       <ul className={styles.reviews}>
         {reviews.map(review => (
           <li key={review.id} className={styles.review}>

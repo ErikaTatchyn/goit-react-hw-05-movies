@@ -1,11 +1,10 @@
-import { Suspense } from 'react';
-import { Router, Routes, Route, Outlet, BrowserRouter } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Header from './Header/Header';
-import Home from './Home/Home';
-import Cast from './MovieDetailsPage/Cast/Cast';
-import MovieDetailsPage from './MovieDetailsPage/MovieDetailsPage';
-import Reviews from './MovieDetailsPage/Reviews/Reviews';
-import MoviePage from './MoviePage/MoviePage';
+import Home from '../pages/Home/Home';
+import Cast from './Cast/Cast';
+import MovieDetailsPage from '../pages/MovieDetailsPage/MovieDetailsPage';
+import Reviews from './Reviews/Reviews';
+import MoviePage from '../pages/MoviePage/MoviePage';
 
 export function App() {
   return (
@@ -17,7 +16,7 @@ export function App() {
           <Route path="cast" element={<Cast />} />
           <Route path="reviews" element={<Reviews />} />
         </Route>
-        <Route path="*" element={<Outlet />} />
+        <Route path="*" element={<Header />} />
       </Route>
     </Routes>
   );
