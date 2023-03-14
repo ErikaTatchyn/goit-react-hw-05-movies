@@ -1,34 +1,44 @@
 import PropTypes from 'prop-types';
+import { useEffect, useState } from 'react';
+import { getMovieCredits } from 'Api';
 import styles from './Cast.module.css';
+import { useParams } from 'react-router-dom';
 
-const Cast = ({ cast }) => (
-  <ul className={styles.cast}>
-    {cast &&
-      cast.map(actor => (
-        <li key={actor.id} className={styles.castItem}>
-          <img
-            src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
-            alt={cast.original_name}
-            className={styles.castItemImage}
-          />
-          <p className={styles.castItemName}>{actor.name}</p>
-          <p className={styles.castItemCharacter}>
-            Character: {actor.character}
-          </p>
-        </li>
-      ))}
-  </ul>
-);
+const Cast = () => {
+  const { movieId } = useParams();
+
+  const [credits, setCredits] = useState(null);
+
+  useEffect(() => {
+    const fetchCredits = async () => {
+      const credits = await getMovieCredits(movieId);
+      setCredits(credits);
+    };
+    fetchCredits();
+  }, [movieId]);
+
+  return (
+    <ul className={styles.cast}>
+      {credits &&
+        credits.map(actor => (
+          <li key={actor.id} className={styles.castItem}>
+            <img
+              src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
+              alt={credits.original_name}
+              className={styles.castItemImage}
+            />
+            <p className={styles.castItemName}>{actor.name}</p>
+            <p className={styles.castItemCharacter}>
+              Character: {actor.character}
+            </p>
+          </li>
+        ))}
+    </ul>
+  );
+};
 
 Cast.propTypes = {
-  cast: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      profile_path: PropTypes.string,
-      character: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  movieId: PropTypes.string.isRequired,
 };
 
 export default Cast;

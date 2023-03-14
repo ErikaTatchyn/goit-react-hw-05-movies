@@ -1,15 +1,10 @@
-import { getMovieDetails, getMovieCredits, getMovieReviews } from 'Api';
+import { getMovieDetails } from 'Api';
 import { useEffect, useState } from 'react';
 import { NavLink, Outlet, useParams } from 'react-router-dom';
-import Cast from '../../components/Cast/Cast';
-import Reviews from '../../components/Reviews/Reviews';
-
 import styles from './MovieDetailsPage.module.css';
 
 const MovieDetailsPage = () => {
   const [movie, setMovie] = useState(null);
-  const [credits, setCredits] = useState(null);
-  const [reviews, setReviews] = useState(null);
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -20,16 +15,6 @@ const MovieDetailsPage = () => {
 
     fetchMovieDetails();
   }, [movieId]);
-
-  const handleCastLinkClick = async () => {
-    const credits = await getMovieCredits(movieId);
-    setCredits(credits);
-  };
-
-  const handleReviewsLinkClick = async () => {
-    const reviews = await getMovieReviews(movieId);
-    setReviews(reviews);
-  };
 
   if (!movie) {
     return <p>Movie not found.</p>;
@@ -77,7 +62,6 @@ const MovieDetailsPage = () => {
               <NavLink
                 to={`/movies/${movieId}/cast`}
                 activeClassName={styles.activeLink}
-                onClick={handleCastLinkClick}
               >
                 Cast
               </NavLink>
@@ -85,7 +69,6 @@ const MovieDetailsPage = () => {
               <NavLink
                 to={`/movies/${movieId}/reviews`}
                 activeClassName={styles.activeLink}
-                onClick={handleReviewsLinkClick}
               >
                 Reviews
               </NavLink>
@@ -93,8 +76,6 @@ const MovieDetailsPage = () => {
           </div>
         </div>
         <Outlet />
-        {reviews && <Reviews reviews={reviews} />}
-        {credits && <Cast cast={credits} />}
       </div>
     </>
   );
