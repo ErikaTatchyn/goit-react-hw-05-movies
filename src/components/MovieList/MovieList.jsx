@@ -1,31 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './MovieList.module.css';
 import MovieCard from 'components/MovieCard/MovieCard';
 
-const MovieList = ({ movies, onItemClick, onSearch }) => {
-  const [searchQuery, setSearchQuery] = useState('');
-
-  const handleSearchChange = event => {
-    setSearchQuery(event.target.value);
-  };
-
-  const handleSearchSubmit = event => {
-    event.preventDefault();
-    onSearch(searchQuery);
-  };
-
+const MovieList = ({ movies, onItemClick }) => {
   return (
     <>
-      <form onSubmit={handleSearchSubmit}>
-        <input
-          type="text"
-          value={searchQuery}
-          onChange={handleSearchChange}
-          placeholder="Search movies"
-        />
-        <button type="submit">Search</button>
-      </form>
       <ul className={styles.list}>
         {movies.map(movie => (
           <MovieCard
@@ -49,8 +29,7 @@ MovieList.propTypes = {
       voteAverage: PropTypes.number,
     })
   ).isRequired,
-  onItemClick: PropTypes.func.isRequired,
-  onSearch: PropTypes.func.isRequired,
+  onItemClick: PropTypes.func,
 };
 
 export default MovieList;

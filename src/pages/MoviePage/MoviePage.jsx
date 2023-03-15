@@ -1,6 +1,7 @@
+import { SearchBar } from 'components/SearchBar/SearchBar';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { getTrendingMovies, searchMovies } from '../../Api';
+import { Link, useSearchParams } from 'react-router-dom';
+import { searchMovies } from '../../Api';
 import MovieCard from '../../components/MovieCard/MovieCard';
 import MovieList from '../../components/MovieList/MovieList';
 import styles from './MoviePage.module.css';
@@ -9,11 +10,19 @@ function MoviePage() {
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get('searchQuery');
+
+  const onSubmit = searchQuery => {
+    setSearchParams({ searchQuery });
+  };
 
   useEffect(() => {
+    if (!searchQuery) {
+      return;
+    }
     setIsLoading(true);
-    getTrendingMovies()
+    searchMovies(searchQuery)
       .then(movies => {
         setMovies(movies);
         setIsLoading(false);
@@ -22,43 +31,29 @@ function MoviePage() {
         setError(error);
         setIsLoading(false);
       });
-  }, []);
-
-  const handleSearch = query => {
-    setIsLoading(true);
-    searchMovies(query)
-      .then(movies => {
-        setMovies(movies);
-        setIsLoading(false);
-        setSearchQuery(query);
-      })
-      .catch(error => {
-        setError(error);
-        setIsLoading(false);
-        setSearchQuery(query);
-      });
-  };
+  }, [searchQuery]);
 
   return (
     <>
       <div className={styles.container}>
         {!isLoading && !error && (
           <div>
-            {searchQuery ? (
+            <SearchBar onSubmit={onSubmit} />
+            {searchQuery && (
               <h2 className={styles.title}>
                 Search Results for "{searchQuery}"
               </h2>
-            ) : (
-              <h2 className={styles.title}>Popular Movies</h2>
             )}
             <div className={styles.movieList}>
-              <MovieList movies={movies} onSearch={handleSearch}>
-                {movies.map(movie => (
-                  <Link key={movie.id} to={`/movies/${movie.id}`}>
-                    <MovieCard movie={movie} />
-                  </Link>
-                ))}
-              </MovieList>
+              {movies.length !== 0 && (
+                <MovieList movies={movies}>
+                  {movies.map(movie => (
+                    <Link key={movie.id} to={`/movies/${movie.id}`}>
+                      <MovieCard movie={movie} />
+                    </Link>
+                  ))}
+                </MovieList>
+              )}
             </div>
           </div>
         )}

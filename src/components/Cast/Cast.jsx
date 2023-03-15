@@ -23,7 +23,11 @@ const Cast = () => {
         credits.map(actor => (
           <li key={actor.id} className={styles.castItem}>
             <img
-              src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
+              src={
+                actor.profile_path
+                  ? `https://image.tmdb.org/t/p/w500${actor.profile_path}`
+                  : 'https://picsum.photos/id/22/200/300'
+              }
               alt={credits.original_name}
               className={styles.castItemImage}
             />
@@ -38,7 +42,7 @@ const Cast = () => {
 };
 
 Cast.propTypes = {
-  movieId: PropTypes.string.isRequired,
+  movieId: PropTypes.string,
 };
 
 export default Cast;

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styles from './Home.module.css';
 import { getTrendingMovies } from '../../Api';
 import { Link } from 'react-router-dom';
+import MovieList from 'components/MovieList/MovieList';
+import MovieCard from 'components/MovieCard/MovieCard';
 
 function Home() {
   const [movies, setMovies] = useState([]);
@@ -18,16 +20,14 @@ function Home() {
 
   return (
     <div className={styles.container}>
-      <ul>
-        {movies &&
-          movies.map(movie => (
-            <li key={movie.id}>
-              <Link to={`/movies/${movie.id}`}>
-                <h2>{movie.title}</h2>
-              </Link>
-            </li>
-          ))}
-      </ul>
+      <h1>Popular Movies</h1>
+      <MovieList movies={movies}>
+        {movies.map(movie => (
+          <Link key={movie.id} to={`/movies/${movie.id}`}>
+            <MovieCard movie={movie} />
+          </Link>
+        ))}
+      </MovieList>
     </div>
   );
 }

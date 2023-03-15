@@ -9,7 +9,15 @@ const MovieCard = ({ movie }) => {
 
   return (
     <Link to={`/movies/${id}`} className={styles.card}>
-      <img src={posterUrl} alt={title} className={styles.poster} />
+      <img
+        src={
+          posterUrl === 'https://image.tmdb.org/t/p/w500null'
+            ? 'https://picsum.photos/id/26/200/300'
+            : posterUrl
+        }
+        alt={title}
+        className={styles.poster}
+      />
       <div className={styles.title}>{title}</div>
     </Link>
   );
